@@ -1,0 +1,45 @@
+body {
+  font-family: sans-serif;
+  color: #333;
+  padding: 30px;
+  margin: 0;
+  background-color: #dedede;
+  line-height: 1.65;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+.grid-parent {
+  display: grid;
+  gap: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .grid-parent {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+  }
+
+  .header,
+  .footer {
+    grid-column: 1 / 3;
+  }
+}
+
+.header,
+.sidebar,
+.main-area {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 4px;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 30px;
+  border-radius: 4px;
+}
