@@ -14,14 +14,16 @@ function App() {
     <div className="grid-parent">
       <div className="header">
         <h1>Welcome To Our App</h1>
-        <p>The current size is x and the current color is x.</p>
         <p>
-          This page has been liked <strong>0</strong> times.
+          The current size is {size} and the current color is {color}.
+        </p>
+        <p>
+          This page has been liked <strong>{likeCount}</strong> times.
         </p>
       </div>
-      <Sidebar />
-      <MainArea />
-      <Footer />
+      <Sidebar color={color} size={size} setColor={setColor} setSize={setSize} />
+      <MainArea color={color} size={size} />
+      <Footer setSize={setSize} setLikeCount={setLikeCount} />
     </div>
   )
 }
