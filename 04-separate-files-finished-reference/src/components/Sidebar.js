@@ -3,12 +3,12 @@ import React from "react"
 function Sidebar(props) {
   return (
     <div className="sidebar">
-      <input type="text" onChange={e => props.setColor(e.target.value)} value={props.color} />
-      <input type="text" onChange={e => props.setSize(e.target.value)} value={props.size} />
+      <input type="text" value={props.size} onChange={e => props.setSize(e.target.value)} />
+      <input type="text" value={props.color} onChange={e => props.setColor(e.target.value)} />
       <button
         onClick={() => {
-          props.setColor("pink")
           props.setSize(20)
+          props.setColor("pink")
         }}
       >
         Make the text 20px and pink

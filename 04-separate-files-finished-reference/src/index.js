@@ -6,9 +6,9 @@ import MainArea from "./components/MainArea"
 import Footer from "./components/Footer"
 
 function App() {
-  const [size, setSize] = useState(15)
+  const [size, setSize] = useState(25)
   const [color, setColor] = useState("skyblue")
-  const [likes, setLikes] = useState(3)
+  const [likeCount, setLikeCount] = useState(0)
 
   return (
     <div className="grid-parent">
@@ -18,12 +18,12 @@ function App() {
           The current size is {size} and the current color is {color}.
         </p>
         <p>
-          This page has been liked <strong>{likes}</strong> times.
+          This page has been liked <strong>{likeCount}</strong> times.
         </p>
       </div>
       <Sidebar color={color} size={size} setColor={setColor} setSize={setSize} />
-      <MainArea size={size} color={color} />
-      <Footer setSize={setSize} setLikes={setLikes} />
+      <MainArea color={color} size={size} />
+      <Footer setSize={setSize} setLikeCount={setLikeCount} />
     </div>
   )
 }

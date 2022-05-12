@@ -1,13 +1,13 @@
 import React from "react"
 
-function Footer(props) {
+function Footer() {
   return (
     <footer className="footer">
       <p>
-        This is the footer. <button onClick={() => props.setSize(30)}>Make the text 30px but leave the color the same</button>
+        This is the footer. <button>Make the text 30px but leave the color the same</button>
       </p>
       <p>
-        <button onClick={() => props.setLikeCount(prev => prev + 1)}>Like The Page</button>
+        <button>Like The Page</button>
       </p>
     </footer>
   )

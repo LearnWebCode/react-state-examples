@@ -1,18 +1,11 @@
 import React from "react"
 
-function Sidebar(props) {
+function Sidebar() {
   return (
     <div className="sidebar">
-      <input type="text" value={props.size} onChange={e => props.setSize(e.target.value)} />
-      <input type="text" value={props.color} onChange={e => props.setColor(e.target.value)} />
-      <button
-        onClick={() => {
-          props.setSize(20)
-          props.setColor("pink")
-        }}
-      >
-        Make the text 20px and pink
-      </button>
+      <input type="text" />
+      <input type="text" />
+      <button>Make the text 20px and pink</button>
     </div>
   )
 }
