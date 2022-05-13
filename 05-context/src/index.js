@@ -1,22 +1,23 @@
-import React, { useState } from "react"
+import React, { useState, createContext } from "react"
 import { createRoot } from "react-dom/client"
-import OurContext from "./OurContext"
-import NamesContext from "./NamesContext"
 
 import Sidebar from "./components/Sidebar"
 import MainArea from "./components/MainArea"
 import Footer from "./components/Footer"
-import ExtraFooter from "./components/ExtraFooter"
+
+import OurContext from "./OurContext"
+
+const AnimalNamesContext = createContext()
 
 function App() {
-  const [size, setSize] = useState(15)
+  const [size, setSize] = useState(25)
   const [color, setColor] = useState("skyblue")
-  const [likes, setLikes] = useState(3)
+  const [likeCount, setLikeCount] = useState(0)
   const [names, setNames] = useState({ catName: "Meowsalot", dogName: "Barksalot" })
 
   return (
-    <NamesContext.Provider value={names}>
-      <OurContext.Provider value={{ size, setSize, color, setColor, likes, setLikes }}>
+    <AnimalNamesContext.Provider value={names}>
+      <OurContext.Provider value={{ color, setColor, size, setSize, likeCount, setLikeCount }}>
         <div className="grid-parent">
           <div className="header">
             <h1>Welcome To Our App</h1>
@@ -24,16 +25,30 @@ function App() {
               The current size is {size} and the current color is {color}.
             </p>
             <p>
-              This page has been liked <strong>{likes}</strong> times.
+              This page has been liked <strong>{likeCount}</strong> times.
             </p>
           </div>
           <Sidebar />
           <MainArea />
           <Footer />
-          <ExtraFooter />
+          <MemoizedExtraFooter />
         </div>
       </OurContext.Provider>
-    </NamesContext.Provider>
+    </AnimalNamesContext.Provider>
+  )
+}
+
+const MemoizedExtraFooter = React.memo(ExtraFooter)
+
+function ExtraFooter() {
+  const names = React.useContext(AnimalNamesContext)
+  console.log("Imagine this function is slow or expensive to run.")
+
+  return (
+    <div>
+      <p>Cat name: {names.catName}</p>
+      <p>Dog name: {names.dogName}</p>
+    </div>
   )
 }
 

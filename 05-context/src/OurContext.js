@@ -1,3 +1,3 @@
 import { createContext } from "react"
-const StateContext = createContext()
-export default StateContext
+const OurContext = createContext()
+export default OurContext
