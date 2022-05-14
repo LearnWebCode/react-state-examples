@@ -1,28 +1,22 @@
-import React, { useReducer, useContext } from "react"
-import StateContext from "../StateContext"
+import React from "react"
+import OurContext from "../OurContext"
 import DispatchContext from "../DispatchContext"
 
-function Sidebar() {
-  const dispatch = useContext(DispatchContext)
-  const state = useContext(StateContext)
-
-  function handle(e) {
-    dispatch({ type: "changeColor", value: e.target.value })
-  }
-
-  function handleSize(e) {
-    dispatch({ type: "changeSize", value: e.target.value })
-  }
-
-  function custom() {
-    dispatch({ type: "changeColorAndSize", value: { color: "pink", size: 20 } })
-  }
+function Sidebar(props) {
+  const state = React.useContext(OurContext)
+  const dispatch = React.useContext(DispatchContext)
 
   return (
     <div className="sidebar">
-      <input onChange={handle} type="text" value={state.color} />
-      <input onChange={handleSize} type="text" value={state.size} />
-      <button onClick={custom}>Make the text 20px and pink</button>
+      <input type="text" value={state.size} onChange={e => dispatch({ type: "changeSize", value: e.target.value })} />
+      <input type="text" value={state.color} onChange={e => dispatch({ type: "changeColor", value: e.target.value })} />
+      <button
+        onClick={() => {
+          dispatch({ type: "changeColorAndSize", value: { color: "pink", size: 20 } })
+        }}
+      >
+        Make the text 20px and pink
+      </button>
     </div>
   )
 }

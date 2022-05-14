@@ -1,8 +1,8 @@
-import React, { useReducer, useContext } from "react"
-import StateContext from "../StateContext"
+import React from "react"
+import OurContext from "../OurContext"
 
-function MainArea() {
-  const state = useContext(StateContext)
+function MainArea(props) {
+  const state = React.useContext(OurContext)
 
   return (
     <div className="main-area" style={{ color: state.color, fontSize: `${state.size}px` }}>

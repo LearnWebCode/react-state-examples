@@ -1,9 +1,9 @@
-import React, { useContext } from "react"
+import React from "react"
 import DispatchContext from "../DispatchContext"
 
-function Footer() {
-  console.log("Imagine our footer is expensive to run")
-  const dispatch = useContext(DispatchContext)
+function Footer(props) {
+  console.log("Imagine our footer is slow.")
+  const dispatch = React.useContext(DispatchContext)
 
   return (
     <footer className="footer">
